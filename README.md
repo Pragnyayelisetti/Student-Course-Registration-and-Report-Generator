@@ -21,35 +21,35 @@ No code or prototype is included as per instructions for **First Project Review*
 
 ## 🧩 Modules in the Project
 
-### 1️⃣ User Authentication
-✔ Student Login  
-✔ Admin Login  
+### 1️) User Authentication
+- Student Login  
+- Admin Login  
 
-### 2️⃣ Student Profile Management
-✔ View personal details  
-✔ Update personal details  
-✔ Academic information  
+### 2️) Student Profile Management
+- View personal details  
+- Update personal details  
+- Academic information  
 
-### 3️⃣ Course Catalog
-✔ View available courses  
-✔ Search/filter courses  
-✔ Course details page  
+### 3️) Course Catalog
+- View available courses  
+- Search/filter courses  
+- Course details page  
 
-### 4️⃣ Course Registration
-✔ Add courses  
-✔ Drop courses  
-✔ Registration limit validation  
-✔ Conflict detection (optional)
+### 4️) Course Registration
+- Add courses  
+- Drop courses  
+- Registration limit validation  
+- Conflict detection (optional)
 
-### 5️⃣ Report Generation
-✔ Downloadable registration slip  
-✔ Registered courses report (PDF/Excel)  
-✔ Semester-wise report  
+### 5️) Report Generation
+- Downloadable registration slip  
+- Registered courses report (PDF/Excel)  
+- Semester-wise report  
 
-### 6️⃣ Admin Panel
-✔ Course management  
-✔ Student registration monitoring  
-✔ Report analytics  
+### 6️) Admin Panel
+- Course management  
+- Student registration monitoring  
+- Report analytics  
 
 ---
 
