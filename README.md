@@ -4,11 +4,11 @@
 Student Course Registration and Report Generator
 
 ## 👥 Team Members
-1. 24B11CS503 – Shanmukh
-2. 24B11CS504 - Pavan Putra
-3. 24B11CS505 - Menaka
-4. 24B11CS507 - Pragnya
-5. 24B11CS548 - Murinda Prince T 
+1. 24B11CS503 – Shanmukh          (Student Module Developer)
+2. 24B11CS504 - Pavan Putra       (Admin Module Developer)
+3. 24B11CS505 - Menaka            (Database Manager)
+4. 24B11CS507 - Pragnya           (Backend Developer)
+5. 24B11CS548 - Murinda Prince T  (Report Generation & Documentation)
 
 ## 🎯 Project Objective
 To develop a web-based system where students can register for courses online, view available courses, download registration reports, and admins can manage course and student details efficiently.
