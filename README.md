@@ -1,4 +1,4 @@
-# 🎓 Student Course Registration and Report Generator
+#  Student Course Registration and Report Generator
 
 A full-stack web application developed to simplify and digitize the academic course registration process for students and administrators.
 
@@ -7,7 +7,7 @@ https://github.com/Pragnyayelisetti/Student-Course-Registration-and-Report-Gener
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 The **Student Course Registration and Report Generator** is a web-based academic management system that enables:
 
@@ -22,13 +22,13 @@ This system mimics a real-world university course registration workflow.
 
 ---
 
-## 🎯 Project Objective
+##  Project Objective
 
 To design and implement a dynamic web application that streamlines course registration, improves data management efficiency, and provides a user-friendly academic interface.
 
 ---
 
-## 👥 Team Members
+##  Team Members
 
 | Roll Number | Name | Role |
 |-------------|------|------|
@@ -40,92 +40,92 @@ To design and implement a dynamic web application that streamlines course regist
 
 ---
 
-## 🧩 System Modules
+##  System Modules
 
-### 🔐 User Authentication
+###  User Authentication
 - Student Login  
 - Admin Login  
 
-### 👤 Student Profile Management
+###  Student Profile Management
 - View personal details  
 - Update personal details  
 - Academic information display  
 
-### 📚 Course Catalog
+###  Course Catalog
 - View available courses  
 - Course details  
 - Search / filter courses  
 
-### 📝 Course Registration
+###  Course Registration
 - Add courses  
 - Drop courses  
 - Registration limits  
 - Conflict detection (optional)  
 
-### 📊 Report Generation
+###  Report Generation
 - Registration slip  
 - Registered courses report  
 - Semester-wise reports  
 - Export options (PDF / Excel)  
 
-### 🛠 Admin Panel
+###  Admin Panel
 - Course management  
 - Student registration monitoring  
 - System analytics  
 
 ---
 
-## 🛠 Technology Stack
+##  Technology Stack
 
-### 💻 Frontend
+###  Frontend
 - **React.js**
 - CSS  
 
-### ⚙ Backend
+###  Backend
 - Node.js  
 - Express.js  
 
-### 🗄 Database
+###  Database
 - MongoDB  
 
 ---
 
-## 💡 Key Features
+##  Key Features
 
-✔ React-based interactive UI  
-✔ Dynamic course display  
-✔ Student/Admin role separation  
-✔ Course registration workflow  
-✔ API-driven architecture  
-✔ Report generation capability  
-
----
-
+ React-based interactive UI  
+ Dynamic course display  
+ Student/Admin role separation  
+ Course registration workflow  
+ API-driven architecture  
+ Report generation capability  
 
 ---
 
-## 🚀 Application Workflow
-
-1️⃣ User Login (Student / Admin)  
-2️⃣ Dashboard Access  
-3️⃣ Course Browsing  
-4️⃣ Course Registration / Drop  
-5️⃣ Profile Management  
-6️⃣ Report Generation  
 
 ---
 
-## 🔮 Future Enhancements
+##  Application Workflow
 
-✔ Email Notifications  
-✔ Timetable Conflict Detection  
-✔ Mobile-Responsive Interface  
-✔ Advanced Analytics  
-✔ Role-Based Access Control  
+1️) User Login (Student / Admin)  
+2️) Dashboard Access  
+3️) Course Browsing  
+4️) Course Registration / Drop  
+5️) Profile Management  
+6️) Report Generation  
 
 ---
 
-## 📌 Academic Purpose
+##  Future Enhancements
+
+ Email Notifications  
+ Timetable Conflict Detection  
+ Mobile-Responsive Interface  
+ Advanced Analytics  
+ Role-Based Access Control  
+
+---
+
+##  Academic Purpose
 
 This project was developed for academic evaluation to demonstrate:
 
@@ -136,10 +136,10 @@ This project was developed for academic evaluation to demonstrate:
 
 ---
 
-## 👍 Acknowledgement
+##  Acknowledgement
 
 Developed as part of academic coursework / project review.
 
 ---
 
-## ⭐ Thank You for Reviewing the Project!
+##  Thank You for Reviewing the Project!
