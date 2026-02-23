@@ -52,8 +52,8 @@ function RegisterCourse() {
   )
 
   const labCount = registeredCourses.filter(
-    (course) => course.type === "lab"
-  ).length
+  (course) => course.type && course.type.toLowerCase() === "lab"
+).length
 
   // ✅ CHECK IF COURSE REGISTERED
   const isRegistered = (courseCode) => {
@@ -72,12 +72,12 @@ function RegisterCourse() {
     }
 
     // ✅ RULE 2 → MAX CREDITS
-    if (totalCredits + course.credits > 20) {
+    if (totalCredits + Number(course.credits) > 20) {
       return alert("Maximum 20 credits exceeded ")
     }
 
     // ✅ RULE 3 → LAB CONSTRAINT
-    if (course.type === "lab" && labCount >= 3) {
+    if (course.type && course.type.toLowerCase() === "lab" && labCount >= 3) {
       return alert("Only 3 lab courses allowed ")
     }
 

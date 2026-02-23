@@ -6,8 +6,8 @@ const registrationSchema = new mongoose.Schema({
     courseName: String,
     courseCode: String,
     branch: String,
-    credits: String
-
+    credits: String,
+    type: String
 })
 
 module.exports = mongoose.model("Registration", registrationSchema)

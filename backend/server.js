@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const bodyParser = require("body-parser")
+const bcrypt = require("bcrypt")
 const User = require("./models/user")
 const Course = require("./models/Course")
 const Registration = require("./models/Registration")
@@ -85,8 +86,37 @@ app.post("/register", async (req, res) => {
         if (role === "admin" && !adminId) {
             return res.status(400).json({ message: "Admin ID required ❌" })
         }
+        // ✅ CHECK DUPLICATE USERNAME
+const existingUsername = await User.findOne({
+    username: { $regex: `^${username}$`, $options: "i" }
+})
 
-        const newUser = new User(req.body)
+if (existingUsername) {
+    return res.status(400).json({
+        message: "Username already taken ❌"
+    })
+}
+        // ✅ CHECK DUPLICATE ROLL NUMBER IN SAME BRANCH
+        if (role === "student") {
+
+            const existingStudent = await User.findOne({
+            rollNumber,
+            branch,
+            role: "student"
+        })
+
+        if (existingStudent) {
+            return res.status(400).json({
+                message: "Roll Number already exists in this branch ❌"
+            })
+        }
+        }
+        const hashedPassword = await bcrypt.hash(password, 10)
+
+const newUser = new User({
+    ...req.body,
+    password: hashedPassword
+})
 
         await newUser.save()
 
@@ -106,7 +136,13 @@ app.post("/login", async (req, res) => {
 
         const user = await User.findOne({ username })
 
-        if (!user || user.password !== password) {
+        if (!user) {
+            return res.status(401).json({ message: "User not found ❌" })
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password)
+
+        if (!isMatch) {
             return res.status(401).json({ message: "Invalid Credentials ❌" })
         }
 
@@ -138,14 +174,15 @@ app.post("/register-course", async (req, res) => {
 
     try {
 
-        const { username, courseName, courseCode, branch, credits } = req.body
+        const { username, courseName, courseCode, branch, credits,type } = req.body
 
         const newRegistration = new Registration({
             username,
             courseName,
             courseCode,
             branch,
-            credits
+            credits,
+            type
         })
 
         await newRegistration.save()
