@@ -15,12 +15,12 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
-// ✅ MongoDB Connection
+// MongoDB Connection
 mongoose.connect("mongodb://127.0.0.1:27017/studentDB")
-.then(() => console.log("MongoDB Connected ✅"))
+.then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err))
 
-// ✅ DEFAULT COURSES SEEDING
+// DEFAULT COURSES SEEDING
 mongoose.connection.once("open", async () => {
 
     const count = await Course.countDocuments()
@@ -54,18 +54,18 @@ mongoose.connection.once("open", async () => {
             }
         ])
 
-        console.log("Default Courses Added ✅🔥")
+        console.log("Default Courses Added")
     }
 
 })
 
-// ✅ Test Route
+//  Test Route
 app.get("/", (req, res) => {
-    res.send("Backend Running ✅")
+    res.send("Backend Running ")
 })
 
 app.listen(5000, () => {
-    console.log("Server running on port 5000 🔥")
+    console.log("Server running on port 5000 ")
 })
 app.post("/register", async (req, res) => {
 
@@ -73,30 +73,30 @@ app.post("/register", async (req, res) => {
 
         const { name, branch, username, password, role, rollNumber, adminId } = req.body
 
-        // ✅ REQUIRED COMMON FIELDS
+        // REQUIRED COMMON FIELDS
         if (!name || !branch || !username || !password || !role) {
-            return res.status(400).json({ message: "Missing required fields ❌" })
+            return res.status(400).json({ message: "Missing required fields " })
         }
 
-        // ✅ ROLE VALIDATION
+        // ROLE VALIDATION
         if (role === "student" && !rollNumber) {
-            return res.status(400).json({ message: "Roll Number required ❌" })
+            return res.status(400).json({ message: "Roll Number required " })
         }
 
         if (role === "admin" && !adminId) {
-            return res.status(400).json({ message: "Admin ID required ❌" })
+            return res.status(400).json({ message: "Admin ID required " })
         }
-        // ✅ CHECK DUPLICATE USERNAME
+        // CHECK DUPLICATE USERNAME
 const existingUsername = await User.findOne({
     username: { $regex: `^${username}$`, $options: "i" }
 })
 
 if (existingUsername) {
     return res.status(400).json({
-        message: "Username already taken ❌"
+        message: "Username already taken "
     })
 }
-        // ✅ CHECK DUPLICATE ROLL NUMBER IN SAME BRANCH
+        // CHECK DUPLICATE ROLL NUMBER IN SAME BRANCH
         if (role === "student") {
 
             const existingStudent = await User.findOne({
@@ -107,7 +107,7 @@ if (existingUsername) {
 
         if (existingStudent) {
             return res.status(400).json({
-                message: "Roll Number already exists in this branch ❌"
+                message: "Roll Number already exists in this branch"
             })
         }
         }
@@ -120,7 +120,7 @@ const newUser = new User({
 
         await newUser.save()
 
-        res.json({ message: "User Registered ✅" })
+        res.json({ message: "User Registered" })
 
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -137,13 +137,13 @@ app.post("/login", async (req, res) => {
         const user = await User.findOne({ username })
 
         if (!user) {
-            return res.status(401).json({ message: "User not found ❌" })
+            return res.status(401).json({ message: "User not found " })
         }
 
         const isMatch = await bcrypt.compare(password, user.password)
 
         if (!isMatch) {
-            return res.status(401).json({ message: "Invalid Credentials ❌" })
+            return res.status(401).json({ message: "Invalid Credentials " })
         }
 
         res.json({
@@ -156,7 +156,7 @@ app.post("/login", async (req, res) => {
     }
 
 })
-// ✅ GET ALL COURSES
+//GET ALL COURSES
 app.get("/courses", async (req, res) => {
 
     try {
@@ -169,7 +169,7 @@ app.get("/courses", async (req, res) => {
     }
 
 })
-// ✅ REGISTER COURSE
+//REGISTER COURSE
 app.post("/register-course", async (req, res) => {
 
     try {
@@ -187,14 +187,14 @@ app.post("/register-course", async (req, res) => {
 
         await newRegistration.save()
 
-        res.json({ message: "Course Registered ✅🔥" })
+        res.json({ message: "Course Registered" })
 
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
 
 })
-// ✅ GET REGISTERED COURSES
+// GET REGISTERED COURSES
 app.get("/my-courses/:username", async (req, res) => {
 
     try {
@@ -210,7 +210,7 @@ app.get("/my-courses/:username", async (req, res) => {
     }
 
 })
-// ✅ UNREGISTER COURSE
+// UNREGISTER COURSE
 app.delete("/unregister-course", async (req, res) => {
 
     try {
@@ -222,7 +222,7 @@ app.delete("/unregister-course", async (req, res) => {
             courseCode
         })
 
-        res.json({ message: "Course Unregistered ✅🔥" })
+        res.json({ message: "Course Unregistered" })
 
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -235,9 +235,9 @@ app.delete("/unregister-course/:username/:courseCode", async (req, res) => {
 
   await Registration.deleteOne({ username, courseCode })
 
-  res.json({ message: "Course Unregistered ✅" })
+  res.json({ message: "Course Unregistered" })
 })
-// ✅ GET USER PROFILE
+// GET USER PROFILE
 app.get("/profile/:username", async (req, res) => {
 
     try {
@@ -247,7 +247,7 @@ app.get("/profile/:username", async (req, res) => {
         })
 
         if (!user) {
-            return res.status(404).json({ message: "User not found ❌" })
+            return res.status(404).json({ message: "User not found" })
         }
 
         res.json(user)
@@ -265,7 +265,7 @@ app.post("/courses", async (req, res) => {
         const course = new Course(req.body)
         await course.save()
 
-        res.json({ message: "Course Added ✅🔥" })
+        res.json({ message: "Course Added" })
 
     } catch (error) {
 
@@ -279,25 +279,25 @@ app.delete("/courses/:courseCode", async (req, res) => {
 
         const { courseCode } = req.params
 
-        // ✅ Find affected students
+        // Find affected students
         const registrations = await Registration.find({ courseCode })
 
-        // ✅ Notify students 😈🔥
+        // Notify students 
         for (let reg of registrations) {
 
             await Notification.create({
                 username: reg.username,
-                message: `Course ${reg.courseName} was removed by Admin 🚨`
+                message: `Course ${reg.courseName} was removed by Admin `
             })
         }
 
-        // ✅ Remove registrations
+        // Remove registrations
         await Registration.deleteMany({ courseCode })
 
-        // ✅ Remove course
+        // Remove course
         await Course.deleteOne({ courseCode })
 
-        res.json({ message: "Course Deleted ✅🔥" })
+        res.json({ message: "Course Deleted" })
 
     } catch (error) {
 
@@ -319,9 +319,9 @@ app.delete("/notifications/:username", async (req, res) => {
         username: req.params.username
     })
 
-    res.json({ message: "Cleared ✅" })
+    res.json({ message: "Cleared" })
 })
-// ✅ ADD COURSE
+// ADD COURSE
 app.post("/add-course", async (req, res) => {
 
   try {
@@ -331,7 +331,7 @@ app.post("/add-course", async (req, res) => {
     const existingCourse = await Course.findOne({ courseCode })
 
     if (existingCourse) {
-      return res.status(400).json({ message: "Course Already Exists ❌" })
+      return res.status(400).json({ message: "Course Already Exists" })
     }
 
     const newCourse = new Course({
@@ -345,7 +345,7 @@ app.post("/add-course", async (req, res) => {
 
     await newCourse.save()
 
-    res.json({ message: "Course Added Successfully ✅🔥" })
+    res.json({ message: "Course Added Successfully" })
 
   } catch (error) {
 
@@ -354,7 +354,7 @@ app.post("/add-course", async (req, res) => {
   }
 
 })
-// ✅ DELETE COURSE
+// DELETE COURSE
 app.delete("/delete-course/:courseCode", async (req, res) => {
 
   try {
@@ -363,7 +363,7 @@ app.delete("/delete-course/:courseCode", async (req, res) => {
 
     await Course.findOneAndDelete({ courseCode })
 
-    res.json({ message: "Course Deleted ✅🔥" })
+    res.json({ message: "Course Deleted" })
 
   } catch (error) {
 
@@ -372,7 +372,7 @@ app.delete("/delete-course/:courseCode", async (req, res) => {
   }
 
 })
-// ✅ GET ALL REGISTRATIONS (ADMIN)
+//  GET ALL REGISTRATIONS (ADMIN)
 app.get("/all-registrations", async (req, res) => {
 
   try {
@@ -387,7 +387,7 @@ app.get("/all-registrations", async (req, res) => {
   }
 
 })
-// ✅ ADMIN REPORT SUMMARY 🔥
+// ADMIN REPORT SUMMARY 
 app.get("/admin-report", async (req, res) => {
 
   try {
@@ -396,7 +396,7 @@ app.get("/admin-report", async (req, res) => {
     const totalCourses = await Course.countDocuments()
     const totalRegistrations = await Registration.countDocuments()
 
-    // ✅ MOST POPULAR COURSES 😈🔥
+    //  MOST POPULAR COURSES 
     const popularCourses = await Registration.aggregate([
       {
         $group: {
